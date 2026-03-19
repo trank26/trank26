@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>North Valley University Athletics</title>
+
+<style>
+
+body{
+margin:0;
+font-family: 'Segoe UI', Tahoma, sans-serif;
+background:#f5f7fb;
+}
+
+/* HEADER */
+.topbar{
+background:#002D72;
+color:white;
+padding:10px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:14px;
+}
+
+.brand{
+font-size:22px;
+font-weight:bold;
+}
+
+.nav{
+background:#FFB81C;
+padding:12px;
+text-align:center;
+font-weight:600;
+}
+
+/* HERO */
+.hero{
+background:linear-gradient(rgba(0,45,114,0.8), rgba(0,45,114,0.8)),
+url('https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf');
+background-size:cover;
+background-position:center;
+color:white;
+padding:80px 20px;
+text-align:center;
+}
+
+.hero h1{
+margin:0;
+font-size:40px;
+}
+
+.hero p{
+font-size:18px;
+margin-top:10px;
+}
+
+/* CONTENT */
+.container{
+max-width:900px;
+margin:auto;
+background:white;
+margin-top:-40px;
+padding:30px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.section-title{
+color:#002D72;
+margin-bottom:10px;
+}
+
+input, textarea{
+width:100%;
+padding:12px;
+margin-top:6px;
+margin-bottom:16px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#002D72;
+color:white;
+border:none;
+padding:14px;
+width:100%;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#001f4d;
+}
+
+.footer{
+text-align:center;
+margin-top:40px;
+padding:20px;
+font-size:12px;
+color:#777;
+}
+
+/* REVEAL */
+#reveal{
+display:none;
+margin-top:40px;
+padding:25px;
+background:#fff3cd;
+border-left:8px solid #ffcc00;
+border-radius:6px;
+}
+
+.education{
+margin-top:20px;
+background:#eef3ff;
+padding:20px;
+border-radius:6px;
+}
+
+.counter{
+margin-top:15px;
+font-size:13px;
+color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<div class="brand">North Valley University Athletics</div>
+<div>Club Sports Recruitment</div>
+</div>
+
+<div class="nav">
+Home | Athletics | Club Sports | Recruitment | Contact
+</div>
+
+<div class="hero">
+<h1>Club Water Polo Recruitment</h1>
+<p>Incoming Freshman Interest – Fall 2026</p>
+</div>
+
+<div class="container">
+
+<h2 class="section-title">Join North Valley Club Water Polo</h2>
+
+<p>
+Our Club Water Polo team is reaching out to prospective students who may be
+interested in joining our program for the upcoming academic year.
+</p>
+
+<p>
+If you're considering North Valley University and have a background in swimming
+or water polo, we encourage you to submit your information below.
+</p>
+
+<form id="phishForm">
+
+<label>Full Name</label>
+<input type="text" required>
+
+<label>Email Address</label>
+<input type="email" required>
+
+<label>High School</label>
+<input type="text">
+
+<label>Years of Experience</label>
+<input type="text">
+
+<label>Additional Comments</label>
+<textarea rows="3"></textarea>
+
+<button type="submit">Submit Interest</button>
+
+</form>
+
+<div class="counter">
+Page visits: <span id="visitCount"></span> |
+Submissions: <span id="submitCount"></span>
+</div>
+
+<div id="reveal">
+
+<h2>🎣 You’ve Been Phished!</h2>
+
+<p>
+This page is part of a **cybersecurity awareness exercise**.  
+No information was collected — but this is how real phishing attacks can look.
+</p>
+
+<div class="education">
+
+<h3>What is phishing?</h3>
+<p>
+Phishing is when attackers pretend to be trusted organizations (like universities)
+to trick you into sharing personal information or clicking malicious links.
+</p>
+
+<h3>Red flags in THIS page</h3>
+<ul>
+<li>No official university domain (this could be hosted anywhere)</li>
+<li>No login through a secure admissions portal</li>
+<li>Generic outreach with no personalization</li>
+<li>Form asks for info without verification of sender identity</li>
+</ul>
+
+<h3>How to protect yourself</h3>
+<ul>
+<li>Always check the URL carefully</li>
+<li>Verify emails through official school websites</li>
+<li>Never submit info through unfamiliar links</li>
+<li>When in doubt, go directly to the source instead of clicking links</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+Educational cybersecurity awareness demo – No data is stored or transmitted.
+</div>
+
+<script>
+
+// Visit Counter
+let visits = localStorage.getItem("visits") || 0;
+visits++;
+localStorage.setItem("visits", visits);
+document.getElementById("visitCount").innerText = visits;
+
+// Submission Counter
+let submits = localStorage.getItem("submits") || 0;
+document.getElementById("submitCount").innerText = submits;
+
+// Form Behavior
+document.getElementById("phishForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+submits++;
+localStorage.setItem("submits", submits);
+document.getElementById("submitCount").innerText = submits;
+
+// Reveal phishing message
+document.getElementById("reveal").style.display = "block";
+
+window.scrollTo({
+top: document.getElementById("reveal").offsetTop,
+behavior: "smooth"
+});
+
+});
+
+</script>
+
+</body>
+</html>
